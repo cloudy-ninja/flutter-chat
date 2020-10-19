@@ -68,16 +68,20 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             SizedBox(
               height: 24.0,
             ),
-            RoundedButton(onPressed: () async {
-              try{
-                final newUser = await _auth.createUserWithEmailAndPassword(email: email, password: password);
-                if(newUser != null) {
-                  Navigator.pushNamed(context, ChatScreen.id);
+            RoundedButton(
+              onPressed: () async {
+                try {
+                  final newUser = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+                  if (newUser != null) {
+                    Navigator.pushNamed(context, ChatScreen.id);
+                  }
+                } catch (e) {
+                  print(e);
                 }
-              } catch(e) {
-                print(e);
-              }
-            }, title: 'Register', colour: Colors.blueAccent,),
+              },
+              title: 'Register',
+              colour: Colors.blueAccent,
+            ),
           ],
         ),
       ),
